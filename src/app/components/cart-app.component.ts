@@ -19,6 +19,8 @@ export class CartAppComponent implements OnInit{
 
   total: number = 0;
 
+  showCart: boolean = false;
+
   constructor(private service: ProductService){
   }
 
@@ -60,5 +62,9 @@ export class CartAppComponent implements OnInit{
 
   saveSession(): void{
     sessionStorage.setItem('cart', JSON.stringify(this.items));
+  }
+
+  openCart(): void{
+    this.showCart = !this.showCart;
   }
 }
