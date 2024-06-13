@@ -35,6 +35,7 @@ export class CartAppComponent implements OnInit{
     }
 
   ngOnInit(): void {
+    this.store.dispatch(total())
     this.onDeleteCart();
     this.onAddCart();
   }
@@ -72,7 +73,7 @@ export class CartAppComponent implements OnInit{
           this.store.dispatch(remove({ id }));
           this.store.dispatch(total());
           this.router.navigate(['/cart']);
-          
+
           Swal.fire({
             title: "Eliminado!",
             text: "El producto ha sido eliminado.",
