@@ -11,7 +11,7 @@ import { total } from '../../store/items.actions';
   imports: [],
   templateUrl: './cart.component.html'
 })
-export class CartComponent{
+export class CartComponent implements OnInit{
   
   items: CartItem[] = [];
   
@@ -25,7 +25,9 @@ export class CartComponent{
         this.total = state.total;
       });
   }
-
+  ngOnInit(): void {
+    this.store.dispatch(total())
+  }
 
   onDeleteCart(id: number){
     this.sharingDataService.idProductEventEmitter.emit(id);
